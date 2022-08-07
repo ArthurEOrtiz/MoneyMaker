@@ -6,22 +6,27 @@ namespace MoneyMaker
     {
         static void Main(string[] args)
         {
-            double bronze = .01;
-            double silver = .05;
-            double gold = .10;
+            int bronze = 1;
+            int silver = 5;
+            int gold = 10;
 
-            Console.WriteLine("Please Enter an amount of $, I'll break that down into bronze silver and gold coins");
+            Console.WriteLine("Please Enter an amount of cents, I'll break that down into bronze silver and gold coins");
             Console.WriteLine("Bronze = $ .01");
             Console.WriteLine("Silver = $ .05");
             Console.WriteLine("Gold = $ .10");
 
-            double response = Convert.ToDouble(Console.ReadLine());
+            int response = Convert.ToInt32(Console.ReadLine());
 
-            //divisible by ten
+            int divisibleByGold = response / gold;
+            int remainderOfGold = response % gold;
+            int divisibleBySilver = remainderOfGold / silver;
+            int remainderOfSilver = remainderOfGold % silver;
+            int divisibleByBronze = remainderOfSilver / bronze;
+        
+            Console.WriteLine("Gold = " + divisibleByGold);
+            Console.WriteLine("Silver = " + divisibleBySilver); 
+            Console.WriteLine("Bronze = " + divisibleByBronze);
 
-            double divisibleByGold = Math.Floor(response / gold);
-            //double remainderOfGold = response % gold;
-            Console.WriteLine(divisibleByGold);
         }
     }
 }
